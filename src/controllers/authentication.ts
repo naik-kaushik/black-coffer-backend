@@ -26,8 +26,10 @@ export const login = async (req: express.Request, res: express.Response) => {
     await user.save();
     res.cookie("backend-auth", user.authentication.sessionToken, {
       httpOnly: true,
-      domain: "https://black-coffer-backend-6f7w.onrender.com",
+      domain: "black-coffer-backend-6f7w.onrender.com",
       path: "/",
+      sameSite: "none",
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
     return res.status(200).json(user).end();
   } catch (error) {
