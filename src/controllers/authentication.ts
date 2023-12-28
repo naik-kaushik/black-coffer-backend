@@ -29,6 +29,7 @@ export const login = async (req: express.Request, res: express.Response) => {
       domain: "black-coffer-backend-6f7w.onrender.com",
       path: "/",
       sameSite: "none",
+      secure: true,
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
     });
     return res.status(200).json(user).end();
