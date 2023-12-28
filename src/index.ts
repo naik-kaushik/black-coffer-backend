@@ -12,7 +12,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: true,
+    origin: 'https://black-coffer-backend-6f7w.onrender.com',
     exposedHeaders: ["Set-Cookie"],
   })
 );
