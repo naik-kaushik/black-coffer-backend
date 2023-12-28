@@ -10,6 +10,11 @@ import {
   getInsightsBySector,
   getInsightsBySource,
   getInsightsByPestle,
+  getSummaryByTopics,
+  getSummaryByRegion,
+  getSummaryByCountry,
+  getSummaryBySector,
+  getSummaryByPestle,
 } from "../controllers/insights";
 import { isAuthenticated, isOwner } from "../middlewares/index";
 
@@ -32,4 +37,9 @@ export default (router: express.Router) => {
     isAuthenticated,
     getInsightsByCountry
   );
+  router.get("/summary/topic", isAuthenticated, getSummaryByTopics);
+  router.get("/summary/region", isAuthenticated, getSummaryByRegion);
+  router.get("/summary/country", isAuthenticated, getSummaryByCountry);
+  router.get("/summary/sector", isAuthenticated, getSummaryBySector);
+  router.get("/summary/pestle", isAuthenticated, getSummaryByPestle);
 };

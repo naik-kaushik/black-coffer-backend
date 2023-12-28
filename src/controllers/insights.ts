@@ -10,6 +10,11 @@ import {
   getInsightsUsingSector,
   getInsightsUsingSource,
   getInsightsUsingPestle,
+  getSummaryUsingTopic,
+  getSummaryUsingRegion,
+  getSummaryUsingCountry,
+  getSummaryUsingSector,
+  getSummaryUsingPestle,
 } from "../db/insights";
 
 export const getAllInsights = async (
@@ -144,6 +149,72 @@ export const getInsightsByPestle = async (
   try {
     const { pestle } = req.params;
     const insights = await getInsightsUsingPestle(pestle);
+    return res.status(200).json(insights);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSummaryByTopics = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const insights = await getSummaryUsingTopic();
+    return res.status(200).json(insights);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSummaryByRegion = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const insights = await getSummaryUsingRegion();
+    return res.status(200).json(insights);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSummaryByCountry = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const insights = await getSummaryUsingCountry();
+    return res.status(200).json(insights);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+
+export const getSummaryBySector = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const insights = await getSummaryUsingSector();
+    return res.status(200).json(insights);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSummaryByPestle = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const insights = await getSummaryUsingPestle();
     return res.status(200).json(insights);
   } catch (error) {
     console.log(error);

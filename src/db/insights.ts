@@ -52,3 +52,153 @@ export const getInsightsUsingSource = (source: string) =>
 
 export const getInsightsUsingPestle = (pestle: string) =>
   InsightModel.find({ pestle });
+
+export const getSummaryUsingTopic = () => {
+  return InsightModel.aggregate(
+    [
+      {
+        $match: {
+          topic: { $ne: "" },
+        },
+      },
+      {
+        $group: {
+          _id: "$topic",
+          totalInsights: { $sum: 1 },
+        },
+      },
+      { $sort: { totalInsights: -1 } },
+      { $limit: 5 },
+    ],
+    {
+      maxTimeMS: 60000,
+      allowDiskUse: true,
+    }
+  )
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getSummaryUsingRegion = () => {
+  return InsightModel.aggregate(
+    [
+      {
+        $match: {
+          region: { $ne: "" },
+        },
+      },
+      {
+        $group: {
+          _id: "$region",
+          totalInsights: { $sum: 1 },
+        },
+      },
+      { $sort: { totalInsights: -1 } },
+      { $limit: 5 },
+    ],
+    {
+      maxTimeMS: 60000,
+      allowDiskUse: true,
+    }
+  )
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getSummaryUsingCountry = () => {
+  return InsightModel.aggregate(
+    [
+      {
+        $match: {
+          country: { $ne: "" },
+        },
+      },
+      {
+        $group: {
+          _id: "$country",
+          totalInsights: { $sum: 1 },
+        },
+      },
+      { $sort: { totalInsights: -1 } },
+      { $limit: 5 },
+    ],
+    {
+      maxTimeMS: 60000,
+      allowDiskUse: true,
+    }
+  )
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getSummaryUsingSector = () => {
+  return InsightModel.aggregate(
+    [
+      {
+        $match: {
+          sector: { $ne: "" },
+        },
+      },
+      {
+        $group: {
+          _id: "$sector",
+          totalInsights: { $sum: 1 },
+        },
+      },
+      { $sort: { totalInsights: -1 } },
+      { $limit: 5 },
+    ],
+    {
+      maxTimeMS: 60000,
+      allowDiskUse: true,
+    }
+  )
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
+
+export const getSummaryUsingPestle = () => {
+  return InsightModel.aggregate(
+    [
+      {
+        $match: {
+          pestle: { $ne: "" },
+        },
+      },
+      {
+        $group: {
+          _id: "$pestle",
+          totalInsights: { $sum: 1 },
+        },
+      },
+      { $sort: { totalInsights: -1 } },
+      { $limit: 5 },
+    ],
+    {
+      maxTimeMS: 60000,
+      allowDiskUse: true,
+    }
+  )
+    .then((results) => {
+      return results;
+    })
+    .catch((error) => {
+      return error.message;
+    });
+};
