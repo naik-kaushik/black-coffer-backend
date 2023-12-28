@@ -25,7 +25,7 @@ export const login = async (req: express.Request, res: express.Response) => {
     );
     await user.save();
     res.cookie("backend-auth", user.authentication.sessionToken, {
-      domain: "localhost",
+      domain: "https://black-coffer-backend-6f7w.onrender.com",
       path: "/",
     });
     return res.status(200).json(user).end();
@@ -35,7 +35,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   }
 };
 
-export const  register = async (req: express.Request, res: express.Response) => {
+export const register = async (req: express.Request, res: express.Response) => {
   try {
     const { email, password, username } = req.body;
     if (!email || !password || !username) {
