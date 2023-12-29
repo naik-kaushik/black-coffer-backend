@@ -29,7 +29,8 @@ export const isAuthenticated = async (
   next: express.NextFunction
 ) => {
   try {
-    const sessionToken = req.cookies["backend-auth"];
+    const sessionToken = req.headers["authorization"];
+    const token = req.cookies["backend-auth"];
     if (!sessionToken) {
       return res.sendStatus(403);
     }
