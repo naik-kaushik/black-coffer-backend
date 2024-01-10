@@ -12,7 +12,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "https://black-coffer-frontend.vercel.app/",
+    origin: "https://black-coffer-frontend.vercel.app",
     exposedHeaders: ["Set-Cookie"],
   })
 );
